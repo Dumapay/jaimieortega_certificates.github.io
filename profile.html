@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+</head>
+<body>
+<center>  <img id="profile-picture" src="images/jaimie.jpg" alt="User Profile Picture" width="250px" height="250px"></center>
+  <center> <p id="name">Name: Jaimie Ortega</p></center>
+  <center> <p id="nickname">Nickname: Cutie</p></center>
+  <center> <p id="age">Age: 21</p></center>
+   <center> <p id="talent">Talent: Magpacute ng mata</p></center>
+
+<center>   <input type="file" id="file-input" onchange="updateProfilePicture()"></center>
+<center>
+  <a href="index.html">
+    <button onclick="window.close()">Back</button>
+  </a>
+</center>
+
+
+  <script>
+    function updateProfilePicture() {
+      var fileInput = document.getElementById('file-input');
+      var profilePicture = document.getElementById('profile-picture');
+
+      // Check if the user selected a file
+      if (fileInput.files && fileInput.files[0]) {
+        // Create a FileReader to read the selected file
+        var reader = new FileReader();
+
+        // When the file is loaded, update the src of the img tag
+        reader.onload = function(e) {
+          profilePicture.src = e.target.result;
+          // Save the new image URL in localStorage
+          localStorage.setItem('profilePicture', e.target.result);
+        }
+
+        // Read the selected file as a data URL
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    }
+
+    window.onload = function() {
+      // Get the saved profile picture URL from localStorage
+      var imageUrl = localStorage.getItem('profilePicture');
+
+      // If there is a saved profile picture URL, update the src attribute of the img tag
+      if (imageUrl) {
+        document.getElementById('profile-picture').src = imageUrl;
+      }
+    }
+
+    function toggleUserProfile() {
+      // Open profile.html in a new tab
+      window.open('profile.html', '_blank');
+    }
+  </script>
+</body>
+</html>

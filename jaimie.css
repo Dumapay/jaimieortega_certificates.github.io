@@ -1,0 +1,141 @@
+
+.user-profile {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  padding: 10px; /* Adjust this value as needed */
+}
+
+.user-profile-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px; /* Adjust this value as needed */
+}
+
+.user-profile-button:hover + .user-profile,
+.user-profile:hover {
+  display: block;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: center;
+}
+
+.gallery div {
+    margin: 5px;
+    border: 10px solid #ccc;
+    overflow: hidden;
+    width: calc(14% - 10px);
+    padding: 10px;
+    animation: glow 2s infinite;
+}
+
+.gallery div img {
+    width: 100%;
+    height: auto;
+}
+
+@keyframes glow {
+  0% { border-color: #ff0000; }
+  50% { border-color: #ffff00; }
+  100% { border-color: #ff0000; }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.overlay img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80%;
+}
+
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .gallery div {
+  border-color: #fff;
+}
+
+body.dark-mode a {
+   color:#fff;
+}
+
+#modeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#settingsIcon {
+  width: 49px;
+  height: 49px;
+  animation: rotation 2s infinite linear;
+}
+
+/* Full width on small screens animation */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+
+/* Your existing CSS code */
+
+/* ... */
+
+/* Media queries for responsiveness */
+
+@media only screen and (max-width: 600px) {
+  .gallery div {
+      width: calc(100% - 10px); /* Full width on small screens */
+      padding: 5px;
+      animation-duration: 2s;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .gallery div {
+      width: calc(25% - 10px); /* One fourth width on wide screens */
+      padding: 5px;
+      animation-duration: 1s;
+  }
+}
+
+
